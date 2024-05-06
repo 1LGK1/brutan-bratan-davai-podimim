@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас</title>
+    <link rel="stylesheet" href="{% static './style.css'%}" type="text/css">
+</head>
+
+<body>
+    {% include "includes/nav.html" %}
+    <div class="about">
+        <div class="about_wrapper">
+            <div class="brand_name">
+                <h1>E-BLOG</h1>
+            </div>
+            <div class="about_info">
+                
+                <div class="about_info_content">
+                    <div class="content_image">
+                        <img src="{% static 'images/market.png'%}" alt="">
+                    </div>
+                    <div class="content_text">
+                        <h3>Добро пожаловать на наш блог, посвященный увлекательному миру электронных товаров! Мы - команда энтузиастов, 
+                            увлеченных последними технологическими новинками и жаждущих делиться с вами нашими знаниями и опытом.</h3>
+                    </div>
+                </div>
+                
+                <div class="about_info_content">
+                    <div class="content_image">
+                        <img src="{% static 'images/retail.png'%}" alt="">
+                    </div>
+                    <div class="content_text">
+                        <h3>Наш блог охватывает широкий спектр тем, связанных с электроникой - от обзоров последних смартфонов и ноутбуков до советов по выбору 
+                            наушников и гаджетов для умного дома. Мы стремимся предложить вам не только 
+                            самую актуальную информацию, но и полезные советы и рекомендации, чтобы помочь вам сделать осознанный выбор 
+                            при покупке электронной техники.</h3>
+                    </div>
+                </div>
+                
+                <div class="about_info_content">
+                    <div class="content_image">
+                        <img src="{% static 'images/shopping_cart.png'%}" alt="">
+                    </div>
+                    <div class="content_text">
+                        <h3>Присоединяйтесь к нам в нашем путешествии по миру электроники! Мы готовы поделиться с вами увлекательными обзорами, интересными новостями и полезными советами, чтобы помочь вам быть в курсе последних тенденций и делать осознанные решения в мире электронных товаров. 
+                            Благодарим вас за ваш интерес - давайте вместе исследовать мир инноваций и технологий! </h3>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="partners">
+                {% include 'includes/links.html' %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

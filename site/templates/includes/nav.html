@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="nav">
+
+    <div class="brand_logo">
+        <a href="{% url 'blogs' %}">
+            <img src="{% static 'images/logo_brand.png'%}" alt="">
+            <p>E-SHOP</p>
+        </a>
+    </div>
+
+
+    <div class="nav_menu">
+        <div class="nav_links">
+            <a href="{% url 'about'%}">О нас</a>
+            <a href="{% url 'blogs'%}">Блоги</a>
+            <a href="{% url 'makepost'%}">Сделать пост</a>
+            <p>{{request.user.username}} |</p> 
+            <a href="{% url 'logout'%}"> Выйти </a>
+        </div> 
+
+    </div>
+</div>

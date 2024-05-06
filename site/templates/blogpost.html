@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<div class="post_wrapper">
+    <div class="post_info">
+        <div class="post_image">
+            <img src="{{ post_1.image.url }}" alt="">
+        </div>
+        <div class="post_title">
+            <h2> {{post_1.title}} </h2>
+        </div>
+        <div class="post_content">
+            <p> {{post_1.content|linebreaksbr}} </p>
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+
+<div class="make_comment">
+    <form method="POST" >{% csrf_token %}
+        <div class="comment_area"> 
+            {{form.as_p}}
+            <button type="submit" class="save btn btn-default" > Отправить комментарий </button>
+        </div>
+    
+    </form>
+</div>
+
+{% else %}
+<h3> Для добавления своего комментария, пожалуйста, авторизуйтесь </h3>
+{% endif %}
+<div class="comments">
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="comment_info">
+            <div class="comment_date">
+                <p> {{comment.date}} <p>
+            </div>
+            <div class="comment_autrhor">
+                <p> {{comment.author}} <p>
+            </div>
+            <div class="comment_content">
+                <p> {{comment.text|linebreaksbr}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

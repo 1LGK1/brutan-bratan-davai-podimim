@@ -1,0 +1,219 @@
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins',sans-serif;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+h3{
+    font-weight: 200;
+}
+p{
+    font-size: 20px;
+}
+.nav {
+    display: flex;
+    width: 100%;
+    padding: 50px 0 50px;
+    align-items: center;
+    
+    
+
+}
+
+.nav_menu { 
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 10%;
+    
+    
+    
+}
+
+.nav_links *{
+    border-radius: 10px;
+    padding: 8px;
+}
+.nav_links *:hover{
+    background-color: rgba(111, 201, 247, 0.554);
+}
+.logout{
+    margin-left: 15px;
+    
+}
+
+.profle_buttons {
+    display: flex;
+    margin-left: 30px;
+    font-size: 20px;
+    
+}
+
+.brand_logo{
+    width: 300px;
+    margin-left: 10%;
+}
+
+
+.nav_links {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+
+}
+
+
+.about_wrapper{
+    padding: 50px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.brand_name{
+    margin-bottom: 50px;
+}
+
+.about_info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.about_info_content{
+    max-width: 30%;
+    padding-bottom: 70px;
+
+}
+.content_image{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.content_image img{
+    max-height: 300px;
+
+}
+
+.partners_links{
+    display: flex;
+    gap: 50px;
+    padding-top: 30px;
+    
+    width: 100%;
+    
+    
+
+
+}
+.post_image img {
+    height: 300px;
+    max-width: 100%;
+    object-fit:scale-down;
+    margin-bottom: 20px;
+}
+.blog_image img{
+    max-height: 270px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.partners{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+
+    
+
+}
+
+.partners_links *{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.partners_links{
+    display: flex;
+    justify-content: center;
+}
+.brand_logo img {
+    width: 70px;
+}
+
+.brand_logo a{
+    display: flex;
+    align-items: center;
+}
+
+
+.blogs {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 10% 0 10%;
+}
+
+.blog_wrapper { 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaeaea;
+    padding: 30px;
+    width:  500px;
+    border-radius: 15px;
+}
+
+
+.post_wrapper{
+    margin: 20px 10% 20px 10%;
+}
+
+.make_comment {
+    margin: 20px 10% 20px 10%;
+    
+}
+
+.comment {
+    margin: 30px 10% 30px 10%;
+    border: 1px solid black;
+    padding: 20px 0 20px 20px;
+    
+}
+
+.comment_area p{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.post_title {
+    padding-bottom: 20px;
+}
+
+.blog_button { 
+    background-color: white;
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.blog_button:hover {
+    background-color: rgba(111, 201, 247, 0.554);
+}
+
+.blog_title p{
+    font-size: 25px;
+}
+
+.blog_date p{
+    font-size: 15px;
+}

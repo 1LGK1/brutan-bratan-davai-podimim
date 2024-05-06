@@ -1,0 +1,23 @@
+from django.db import models
+
+from django.contrib.auth.models import User
+
+class Blog(models.Model):
+    title = models.CharField( max_length = 100, unique_for_date =
+    "posted", verbose_name = "Заголовок")
+    description = models.TextField(verbose_name = "Краткое содержание")
+    content = models.TextField( verbose_name = "Полное содержание")
+    posted = models.DateTimeField(db_index = True, verbose_name = "Опубликована")
+    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор")
+    image = models.ImageField(upload_to='images/', default='temp.jpg', verbose_name="Картинка")
+    def __str__(self):
+        return str(self.title)
+
+class Comment (models.Model):
+    text = models.TextField(verbose_name = 'Текст комментария')
+    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор")
+    date = models.DateTimeField(db_index = True, verbose_name = "Опубликован")
+    post = models.ForeignKey(Blog , on_delete = models.CASCADE , verbose_name = "Статья комментария")
+    
+    def __str__(self):
+        return f"{self.post} - {self.author}"
