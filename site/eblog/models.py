@@ -28,3 +28,10 @@ class Videos(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class Feedback(models.Model):
+    username = models.CharField(max_length = 50 , verbose_name = "Имя")
+    city = models.CharField(max_length = 50 , verbose_name = "Город")
+    content = models.TextField(verbose_name = "Коментарий:")
+    feedback = models.BooleanField(default = False)

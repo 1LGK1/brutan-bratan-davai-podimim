@@ -1,15 +1,7 @@
+{% extends "layout.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас</title>
-    <link rel="stylesheet" href="{% static './style.css'%}" type="text/css">
-</head>
-
-<body>
-    {% include "includes/nav.html" %}
+{% block title %}О нас{% endblock %}
+{% block content %}
     <div class="about">
         <div class="about_wrapper">
             <div class="brand_name">
@@ -50,10 +42,9 @@
                 </div>
                 
             </div>
-            <div class="partners">
-                {% include 'includes/links.html' %}
-            </div>
+            
+                <a href="{% url 'contacts'%}"><div class="partners_about"><p>Страница с ссылками</p></div></a>
+            
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

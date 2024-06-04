@@ -15,6 +15,8 @@ urlpatterns = [
     path('logout' , views.logout_view, name="logout"),
     path('makepost' , views.makepost, name="makepost"),
     path('videos',views.videos,name="videos"),
+    path('feedback',views.feedback,name="feedback"),
+    path('contacts',views.contacts,name="contacts"),
 ]
 
 

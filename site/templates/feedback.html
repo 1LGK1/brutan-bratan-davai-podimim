@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Обратная связь{% endblock %}
+{% block content %}
+
+    <div class="feedback_wrapper">
+        <form action="" method="post" >
+            {% csrf_token %}
+            <div class="feedback_username">
+                <p>Введите ваше имя</p>
+                {{form.username}}
+            </div>
+
+            <div class="feedback_city">
+                <p>Введите ваш город:</p>
+                {{form.city}}
+            </div>
+
+            <div class="feedback_content">
+                <p>Введите ваш вопрос:</p>
+                 {{form.content}}
+            </div>
+
+            <div class="feedback_checkbox">
+                <p>Хотите получать рассылку?</p>
+                {{form.feedback}}
+            </div>
+            <button type="submit" class="sumbit_feedback">Отправить</button>
+        </form>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.sumbit_feedback');
+
+
+        button.addEventListener('mouseover', function () {
+            button.style.backgroundColor = 'orange';
+            button.style.color = 'black'
+        });
+
+        button.addEventListener('mouseout', function () {
+            button.style.backgroundColor = 'rgba(111, 201, 247, 0.554)';
+            button.style.color = 'black'
+        });
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        const textArea = document.querySelectorAll('textarea');
+
+            textInputs.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.style.backgroundColor = 'rgba(111, 201, 247, 0.554)'; 
+                this.style.color = 'white';
+            });
+
+
+            input.addEventListener('blur', function () {
+                this.style.backgroundColor = 'white'; 
+                this.style.color = 'black';
+            });
+
+            
+            });
+
+            textArea.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.style.backgroundColor = 'rgba(111, 201, 247, 0.554)'; 
+                this.style.color = 'white';
+            });
+
+
+            input.addEventListener('blur', function () {
+                this.style.backgroundColor = 'white'; 
+                this.style.color = 'black';
+            });
+
+            
+            });
+        
+    });
+</script>
+{% endblock %}

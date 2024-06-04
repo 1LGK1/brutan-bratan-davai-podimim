@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Comment , Blog , Videos
+from .models import Comment , Blog , Videos , Feedback
 from django.db import models
 
 class UserLoginForm(AuthenticationForm):
@@ -48,3 +48,10 @@ class MakeVideo(forms.ModelForm):
     class Meta:
         model = Videos
         fields = ('name','video_file')
+
+
+
+class Feedback(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ('username','city','content','feedback')

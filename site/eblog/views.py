@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect 
 from django.contrib import auth
-from .forms import UserLoginForm, UserRegistrationForm , CommentForm ,MakePost , MakeVideo
+from .forms import UserLoginForm, UserRegistrationForm , CommentForm ,MakePost , MakeVideo , Feedback
 import datetime
 from django.http import HttpRequest
 from django.urls import reverse
@@ -109,3 +109,20 @@ def videos(request):
     'videos': videos, 
     }
     return render(request,"videos.html",context)
+
+
+def feedback(request):
+    if request.method == "POST":
+        form = Feedback(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("feedback"))
+    else:
+        form = Feedback()
+    context = {
+        'form':form,
+    }
+    return render(request,"feedback.html",context)
+
+def contacts(request):
+    return render(request,"contacts.html")
