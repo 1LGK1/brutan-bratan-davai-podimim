@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Comment
+from .models import Comment , Blog , Videos
 from django.db import models
 
 class UserLoginForm(AuthenticationForm):
@@ -37,3 +37,14 @@ class CommentForm (forms.ModelForm):
         model = Comment
         fields = ('text',)
         labels = {'text' : "Комментарий"} 
+
+class MakePost (forms.ModelForm):
+    posted = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    class Meta:
+        model = Blog
+        fields = ('title','description','content','image','posted')
+
+class MakeVideo(forms.ModelForm):
+    class Meta:
+        model = Videos
+        fields = ('name','video_file')

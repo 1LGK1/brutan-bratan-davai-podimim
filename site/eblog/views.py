@@ -1,11 +1,12 @@
 from django.shortcuts import render , redirect 
 from django.contrib import auth
-from .forms import UserLoginForm, UserRegistrationForm , CommentForm
+from .forms import UserLoginForm, UserRegistrationForm , CommentForm ,MakePost , MakeVideo
 import datetime
 from django.http import HttpRequest
 from django.urls import reverse
-from .models import Blog , Comment
+from .models import Blog , Comment , Videos
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required ,permission_required
 
 def about(request):
     return render(request, "about.html")
@@ -39,12 +40,9 @@ def registration(request):
 
 
 def blogs(request):
-
-    """Renders the blog page."""
-
     assert isinstance(request, HttpRequest)
 
-    posts = Blog.objects.all() # запрос на выбор всех статей блога из модели
+    posts = Blog.objects.all()
     context = {
     'title':'Блог',
     'posts': posts, 
@@ -57,37 +55,23 @@ def blogpost(request, parametr):
 
     assert isinstance(request, HttpRequest)
 
-    post_1 = Blog.objects.get(id=parametr) # запрос на выбор конкретной статьи по параметру
+    post_1 = Blog.objects.get(id=parametr)
     comments = Comment.objects.filter(post=parametr)
-    if request.method == "POST": # после отправки данных формы на сервер методом POST
-
+    if request.method == "POST":
         form = CommentForm(request.POST)
-
         if form.is_valid():
-
             comment_f = form.save(commit=False)
-
-            comment_f.author = request.user # добавляем (так как этого поля нет в форме) в модель Комментария (Comment) в поле автор авторизованного пользователя
-
-            comment_f.date = datetime.datetime.now() # добавляем в модель Комментария (Comment) текущую дату
-
-            comment_f.post = Blog.objects.get(id=parametr) # добавляем в модель Комментария (Comment) статью, для которой данный комментарий
-
-            comment_f.save() # сохраняем изменения после добавления полей
-
-            return redirect('blogpost', parametr=post_1.id) # переадресация на ту же страницу статьи после отправки комментария
-
+            comment_f.author = request.user 
+            comment_f.date = datetime.datetime.now() 
+            comment_f.post = Blog.objects.get(id=parametr)
+            comment_f.save() 
+            return redirect('blogpost', parametr=post_1.id) 
     else:
-
-        form = CommentForm() # создание формы для ввода комментария
-        
+        form = CommentForm()
     context = {
-        'post_1': post_1, # передача конкретной статьи в шаблон веб-страницы
+        'post_1': post_1,
         'comments': comments, 
-        'form':form,
-        
-
-    }
+        'form':form,}
     return render(request,'blogpost.html',context)
 
 
@@ -95,6 +79,33 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-
+@login_required
+@permission_required('is_superuser')
 def makepost(request):
-    return render(request,"makepost.html")
+    if request.method == "POST":
+        form = MakePost(request.POST, request.FILES)
+        form_video = MakeVideo(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.author = request.user
+            form.save()
+            return redirect(reverse("blogs"))
+        if form_video.is_valid():
+            form_video.save()
+            return redirect(reverse("videos"))
+    else:
+        form = MakePost()
+        form_video = MakeVideo()
+    context = {
+        'form':form,
+        'form_video':form_video,
+
+    }
+    
+    return render(request,"makepost.html",context)
+
+def videos(request):
+    videos = Videos.objects.all()
+    context = {
+    'videos': videos, 
+    }
+    return render(request,"videos.html",context)

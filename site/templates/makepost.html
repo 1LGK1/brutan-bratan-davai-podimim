@@ -10,5 +10,51 @@
 </head>
 <body>
     {% include 'includes/nav.html' %}
+    <div class="forms_wrapper">
+        <form class= "make_post" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="makepost_wrapper">
+                <div class="post_title">
+                    <p>Введите заголовок статьи:</p>
+                    {{form.title}}
+                </div>
+                <div class="post_description">
+                    <p>Введите краткое описание статьи:</p>
+                    {{form.description}}
+                </div>
+                <div class="post_content">
+                    <p>Введите полное описание статьи:</p>
+                    {{form.content}}
+                </div>
+                <div class="post_image">
+                    <p>Выберите картинку для статьи:</p>
+                    {{form.image}}
+                </div>
+                <div class="post_date">
+                    <p>Дата поста:</p>
+                    {{form.posted}}
+                </div>
+                <button type='sumbit'>Cделать пост</button>
+            </div>
+        </form>
+        
+        <form class= "make_video" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <div class="makepost_wrapper">
+                <div class="post_title">
+                    <p>Введите название видео:</p>
+                    {{form_video.name}}
+                </div>
+                <div class="post_video">
+                    <p>Выберите картинку для статьи:</p>
+                    {{form_video.video_file}}
+                </div>
+                <button type='sumbit'>Выложить видео</button>
+            </div>
+            
+        </form>
+    </div>
+    
 </body>
 </html>

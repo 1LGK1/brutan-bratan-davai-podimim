@@ -9,7 +9,7 @@ class Blog(models.Model):
     content = models.TextField( verbose_name = "Полное содержание")
     posted = models.DateTimeField(db_index = True, verbose_name = "Опубликована")
     author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор")
-    image = models.ImageField(upload_to='images/', default='temp.jpg', verbose_name="Картинка")
+    image = models.ImageField(upload_to='images/', verbose_name="Картинка")
     def __str__(self):
         return str(self.title)
 
@@ -21,3 +21,10 @@ class Comment (models.Model):
     
     def __str__(self):
         return f"{self.post} - {self.author}"
+    
+class Videos(models.Model):
+    video_file = models.FileField(upload_to='videos/')
+    name = models.TextField(verbose_name = "Название видео")
+
+    def __str__(self):
+        return str(self.name)

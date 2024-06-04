@@ -14,6 +14,7 @@ urlpatterns = [
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
     path('logout' , views.logout_view, name="logout"),
     path('makepost' , views.makepost, name="makepost"),
+    path('videos',views.videos,name="videos"),
 ]
 
 
