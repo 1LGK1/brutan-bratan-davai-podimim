@@ -297,6 +297,10 @@ input ,textarea{
 .feedback_city input{
     height: 30px;
 }
+
+.feedback_email input{
+    height: 30px;
+}
 .feedback_username input {
     height: 30px;
 }

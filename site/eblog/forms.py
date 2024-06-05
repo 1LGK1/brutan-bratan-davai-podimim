@@ -54,4 +54,4 @@ class MakeVideo(forms.ModelForm):
 class Feedback(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ('username','city','content','feedback')
+        fields = ('username','city','content','feedback','email')

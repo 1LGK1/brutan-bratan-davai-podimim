@@ -11,6 +11,11 @@
                 {{form.username}}
             </div>
 
+            <div class="feedback_email">
+                <p>Введите ваше имя</p>
+                {{form.email}}
+            </div>
+
             <div class="feedback_city">
                 <p>Введите ваш город:</p>
                 {{form.city}}
@@ -48,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('DOMContentLoaded', function () {
         const textInputs = document.querySelectorAll('input[type="text"]');
         const textArea = document.querySelectorAll('textarea');
+        const textEmail = document.querySelectorAll('input[type="email"]');
 
             textInputs.forEach(input => {
             input.addEventListener('focus', function () {
@@ -65,6 +71,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             textArea.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.style.backgroundColor = 'rgba(111, 201, 247, 0.554)'; 
+                this.style.color = 'white';
+            });
+
+
+            input.addEventListener('blur', function () {
+                this.style.backgroundColor = 'white'; 
+                this.style.color = 'black';
+            });
+
+            
+            });
+            textEmail.forEach(input => {
             input.addEventListener('focus', function () {
                 this.style.backgroundColor = 'rgba(111, 201, 247, 0.554)'; 
                 this.style.color = 'white';

@@ -35,3 +35,4 @@ class Feedback(models.Model):
     city = models.CharField(max_length = 50 , verbose_name = "Город")
     content = models.TextField(verbose_name = "Коментарий:")
     feedback = models.BooleanField(default = False)
+    email = models.EmailField(default="example@example.com" , max_length = 250)

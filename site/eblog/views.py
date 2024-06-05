@@ -110,7 +110,7 @@ def videos(request):
     }
     return render(request,"videos.html",context)
 
-
+@login_required
 def feedback(request):
     if request.method == "POST":
         form = Feedback(request.POST)
